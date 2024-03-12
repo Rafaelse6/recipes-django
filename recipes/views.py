@@ -5,11 +5,11 @@ from recipes.models import Recipe
 
 def home(request):
     recipes = Recipe.objects.filter(
-        is_published=True
+        is_published=True,
     ).order_by('-id')
+
     return render(request, 'recipes/pages/home.html', context={
         'recipes': recipes,
-        'title': f'{recipes.first().category.name} - Category | '
     })
 
 
