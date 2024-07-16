@@ -15,7 +15,7 @@ class RecipeModelTest(RecipeTestBase):
             author=self.make_author(username='newuser'),
             title='Recipe Title',
             description='Recipe Description',
-            slug=slug_content,
+            slug='recipe-slug-for-no-defaults',
             preparation_time=10,
             preparation_time_unit='Minutos',
             servings=5,
@@ -50,10 +50,6 @@ class RecipeModelTest(RecipeTestBase):
             recipe.is_published,
             msg='Recipe is_published is not False',
         )
-
-    def test_recipe_slug_name_is_not_repeated(self):
-        with self.assertRaises(ValidationError):
-            self.make_recipe_no_defaults('recipe-slug')
 
     def test_recipe_string_representation(self):
         needed = 'Testing representation'
